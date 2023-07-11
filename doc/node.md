@@ -17,6 +17,7 @@
 ### 对应课时 
 - [课程 01-为什么写测试-更高阶的调试手法-提高开发效率](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_63f37a52e4b030cacb189f3a?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=%2a%2a6%2a%2a)
 - [02-单元测试在修改代码时的好处](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_63f6e324e4b02685a448152d?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+- [03-写测试的好处-活文档&改善程序设计](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_63f9c24ce4b06159f741212d?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ### 写新功能 场景
 - 无单测写代码: 实现代码 -> 调试 (手动) -有错误-> 更改 -> ..
 - 有单测写代码: 实现测试 -> 实现代码 -> 执行测试 -> 更改 -> 执行测试 
