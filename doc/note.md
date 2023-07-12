@@ -18,6 +18,8 @@
 - [课程 01-为什么写测试-更高阶的调试手法-提高开发效率](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_63f37a52e4b030cacb189f3a?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=%2a%2a6%2a%2a)
 - [02-单元测试在修改代码时的好处](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_63f6e324e4b02685a448152d?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 - [03-写测试的好处-活文档&改善程序设计](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_63f9c24ce4b06159f741212d?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+- [04-自动化思维-功能验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_63fb6f8ce4b030cacb1bd03f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+- [05-自动化思维-定位&修复bug](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_63fccaafe4b02685a44a853c?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ### 写新功能 场景
 - 无单测写代码: 实现代码 -> 调试 (手动) -有错误-> 更改 -> ..
 - 有单测写代码: 实现测试 -> 实现代码 -> 执行测试 -> 更改 -> 执行测试 
@@ -33,9 +35,18 @@
 ### check 别人代码 场景
 - 无单测 : 肉眼查看代码是否有问题 -> 测试所有功能 并-> 合并 -> 希望不要有bug
 - 有单测 : 自动化跑单测 ->  肉眼查看代码质量 -> 合并 -> DONE
+
+### 调试代码场景
+1. 无单测 : 发现报错 -> 从UI的第一个节点开始走流程 -> 调试到自己需要的代码 -> 修改 -> 重复流程
+2. 有单测 : 发现错误 -> 执行测试整体的单元测试 -> 确定自己的错误 -> 使用单元测试 孤立调试该代码 -> 结束 
+> 两种调试过程对比: <br/>
+> 1. 有单测的情况下我们可以孤立测试一个功能
+> 2. 有单测的情况下我们可以把一些必须要做的流程功能固化,每次调试只需要走对应流程即可.
 ## 除测试以外的好处
 1. 单测在完成的同时, 产生活文档. 且该文档会实时的根据代码逻辑进行修改. 不会存在文档没有更新的情况 . 
 2. 因为需要写单测, 如果代码耦合在一起会增加单测成本. 所以会在执行层面 驱动自己执行 单一职责原则 .
 3. 代码稳定, 文档全面, 打代码开心 , 加班减少 , B格拉满 .
+
 # 其他技巧
 1. 阅读源码从单测开始 (通过单测这份文档来熟悉代码逻辑) . 
+
