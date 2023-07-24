@@ -5,3 +5,66 @@
 2. 调用测试的功能(when) -> 例如 点击上传按扭,点击保存 
 3. 验证功能(then) ->  例如 保存后返回了我们想要的数据
 4. 拆卸 -> 例如 刷新页面,清理缓存,清理后端数据,切换新帐号.保证测试环境干净
+# 准备测试数据的三种方式
+## 课时
+[16-准备测试数据的三种方式](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64296c96e4b0b0bc2bd102d8?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+## 内联
+- 数据准备在测试中 , 不进行任何处理
+- 缺点: 数据重复, 可读性变差 , 后续维护成本增加
+- 优点: 无脑
+- 使用场景: 一开始使用后续维护 
+```javascript
+it('add', () => {
+  const item = {title:'xx'}
+  expect(add(item)[0].title).toBe('xx')
+})
+```
+## 委托
+- 通过函数创建一个数据
+- 优点 : 可以解决代码重复 , 可读性变高  
+### 工厂模式
+```ts
+function createItem(title:string , content : string = 'content' ){
+  return {title,content}
+}
+it('add', () => {
+  const item = createItem('标题');
+  expect(add(item)[0].title).toBe('标题')
+})
+it('add', () => {
+  const item = createItem('标题','内容');
+  expect(add(item)[0].title).toBe('标题')
+  expect(add(item)[0].content).toBe('内容')
+})
+```
+### 内联
+```ts
+function createItem(title:string , content : string = 'content' ){
+  return {title ,content}
+}
+it('add', () => {
+  const item = createItem('标题');
+  expect(add(item)[0].title).toBe('标题')
+})
+it('add', () => {
+  const item = createItem('标题','内容');
+  item.title = '你好'
+  expect(add(item)[0].title).toBe('你好')
+  expect(add(item)[0].content).toBe('内容')
+})
+```
+## 隐式
+- 通过 vitest 的 生命周期创建.
+- 缺点:可读性变差
+- 使用: 
+  - 使用 describe 将两个内容放在一起
+  - 不要在一个 生命周期中创建一系列参数 割裂代码.
+```ts
+let item = {name :'xx'}
+before(()=>{
+  item = {name:'xx'}
+})
+it('add',() => {
+  expect(add(item)[0].title).toBe('标题')
+})
+```
