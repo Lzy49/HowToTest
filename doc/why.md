@@ -55,7 +55,7 @@
 3. 代码稳定, 文档全面, 打代码开心 , 加班减少 , B格拉满 .
 # 不写单测的原因
 ## 对应课时
-- [10-不写测试的原因] (https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_640897f4e4b06159f7475222?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+- [10-不写测试的原因](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_640897f4e4b06159f7475222?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ## 认知误区
 1. 没有写单测的时间 -> 认知误区.
 2. 功能测试是测试的工作 -> 其实单测是我们的助手 , 且是白盒测试 无法替代测试同学的工作.
