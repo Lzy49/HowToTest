@@ -9,3 +9,5 @@
 - [15课:Jest和vitest差异](https://github.com/Lzy49/HowToTest/blob/main/doc/VitestVSJest.md)
 - [16-准备测试数据的三种方式](https://github.com/Lzy49/HowToTest/blob/main/doc/how.md)
 - [17-后门操作准备数据的方式](https://github.com/Lzy49/HowToTest/blob/main/doc/how.md)
+- [18-最小准备测试数据原则](https://github.com/Lzy49/HowToTest/blob/main/doc/how.md)
+

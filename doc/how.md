@@ -7,9 +7,11 @@
 4. 拆卸 -> 例如 刷新页面,清理缓存,清理后端数据,切换新帐号.保证测试环境干净
 # 准备测试数据的方式
 ## 课时
-[16-准备测试数据的三种方式](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64296c96e4b0b0bc2bd102d8?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
-[17-后门操作准备数据的方式](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_642c20fee4b0f2aa7dd73ec2?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
-## 内联
+- [16-准备测试数据的三种方式](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64296c96e4b0b0bc2bd102d8?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+- [17-后门操作准备数据的方式](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_642c20fee4b0f2aa7dd73ec2?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+- [18-最小准备测试数据原则](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_643023b0e4b0f2aa7dd8b890?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+## 方式
+### 内联
 - 数据准备在测试中 , 不进行任何处理
 - 缺点: 数据重复, 可读性变差 , 后续维护成本增加
 - 优点: 无脑
@@ -20,10 +22,10 @@ it('add', () => {
   expect(add(item)[0].title).toBe('xx')
 })
 ```
-## 委托
+### 委托
 - 通过函数创建一个数据
 - 优点 : 可以解决代码重复 , 可读性变高  
-### 工厂模式
+#### 工厂模式
 ```ts
 function createItem(title:string , content : string = 'content' ){
   return {title,content}
@@ -38,7 +40,7 @@ it('add', () => {
   expect(add(item)[0].content).toBe('内容')
 })
 ```
-### 内联
+#### 内联
 ```ts
 function createItem(title:string , content : string = 'content' ){
   return {title ,content}
@@ -54,7 +56,7 @@ it('add', () => {
   expect(add(item)[0].content).toBe('内容')
 })
 ```
-## 隐式
+### 隐式
 - 通过 vitest 的 生命周期创建.
 - 缺点:可读性变差
 - 使用: 
@@ -69,7 +71,19 @@ it('add',() => {
   expect(add(item)[0].title).toBe('标题')
 })
 ```
-## 后门操作准备数据
+### 后门操作准备数据
 - 通过修改业务代码实现数据保存,例如 store 中没有 数据,我们可以通过 add 方法也可以通过 操作 store 来传入数据.而 操作 store 就是后门操作
 - 缺点: 后门操作是脆弱测试, 如果结构发生变化,测试很容易出错.
 - 优点: 在没有创建数据的方法时,可以即使使用.
+## 原则
+### 最小准备原则
+1. 在准备数据的时候,和当前测试无关的数据不需要提供,保持单元测试的可读性.
+2. 原因: 
+   1. 测试代码维护成本要 < 业务代码成本. 大家才能有动力写.
+   2. 测试是代码api的用户.所以 测试代码简单 == api 封装的好
+## 解决方案:
+1. 修改业务代码,删除多余参数 or 可选值 . -> 单测是一个 api 的用户, 修改业务代码是有必要性的. 单测 会产生的操作在业务中也会存在.
+2. 使用工厂模式 helper.
+3. 使用后面操作.
+### round-trip
+尽量不使用后门方法去创建测试数据, 而是使用 已有业务函数创建数据. 
