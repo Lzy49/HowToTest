@@ -24,6 +24,13 @@
 - toBeFalsy : 判断值是否是一个否值 `false` , `0`
 - toContain : 判断值是否在数组中 或 字符串中
 - toThrow : 判断函数是否会抛出错误, 如果传入值会判断 错误内容是否相同.
+# mock 
+- mock 模拟数据
+## 相关api
+- vi.mock  创建一个 mock  ( 和  mocked 有冲突, 不能两个位置定义数据)
+- vi.mocked 获取当前已有的mock
+  - mockReturnValue(value) // 替换 mock 中的值
+- vi.doMock 创建一个 mock 数据 但是不会被提升到最上面
 # vitest 生命周期
 ## 执行顺序 & 作用域
 1. 生命周期对同层有效果

@@ -5,7 +5,8 @@
 2. 调用测试的功能(when) -> 例如 点击上传按扭,点击保存 
 3. 验证功能(then) ->  例如 保存后返回了我们想要的数据
 4. 拆卸 -> 例如 刷新页面,清理缓存,清理后端数据,切换新帐号.保证测试环境干净
-# 准备测试数据的方式
+
+# 准备测试数据的方式 ( given )
 ## 课时
 - [16-准备测试数据的三种方式](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64296c96e4b0b0bc2bd102d8?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 - [17-后门操作准备数据的方式](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_642c20fee4b0f2aa7dd73ec2?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
@@ -87,3 +88,54 @@ it('add',() => {
 3. 使用后面操作.
 ### round-trip
 尽量不使用后门方法去创建测试数据, 而是使用 已有业务函数创建数据. 
+# 调用测试的功能
+## 课时
+1. [19-程序的间接输入-依赖函数调用-stub 的应用](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6432c647e4b0b2d1c405309f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+## 输入
+### 直接输入
+- 测试代码直接给 业务代码传入的 内容. 
+```js
+it('test 直接' , () => {
+  const a = {name:'直接值'} // 直接输入
+  expect(fn(a).name).toBe('直接值')
+})
+```
+### 程序间接输入
+#### 依赖函数调用 stub
+- 测试传入值是另一个业务函数创造的值.
+- 常用在 数据在 内存 , 环境变量 ,store 中
+#### 方法
+- 替换掉真实的逻辑实现.
+- 使用场景 : 当我们可以控制传入值时,可以使用这种方式.
+- 方案:使用 mock 模拟程序产生数据.
+```js
+function createItem(){
+  return {
+    name:'xx',
+    money:100
+  }
+}
+function addMoney(item){
+  item.money ++ ; 
+  return item
+}
+```
+```js
+import { mockCreateItem } from './user'
+vi.mock("./user", () => {
+  return {
+    mockCreateItem(){
+      return {
+        name:'xx'
+        money:10
+      }
+    }
+  }
+})
+it('test 依赖函数调用',() => {
+  expect(addMoney(createItem()).money).toBe(101) // wrong : 因为数据容易发生改变, 我们写死后 , 修改逻辑代码会发生改变.
+  expect(addMoney(mockCreateItem()).money).toBe(101) // 正确的测试, 使用了 mock 中的数据, 数据不会因为上面的函数发生变化而变化.
+})
+```
+##### 处理 Promise 异步
+- 直接使用 mock 返回 Promise 即可 .
