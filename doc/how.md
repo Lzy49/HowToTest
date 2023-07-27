@@ -91,6 +91,8 @@ it('add',() => {
 # 调用测试的功能
 ## 课时
 1. [19-程序的间接输入-依赖函数调用-stub 的应用](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6432c647e4b0b2d1c405309f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+2. [20-程序的间接输入-第三方库&对象&class&常量](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64352f78e4b0b0bc2bd55ba4?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+3. [21-程序的间接输入-环境变量-全局global-间接层处理技巧](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64397ffce4b0f2aa7ddc47d1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ## 输入
 ### 直接输入
 - 测试代码直接给 业务代码传入的 内容. 
