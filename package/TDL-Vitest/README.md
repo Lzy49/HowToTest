@@ -36,6 +36,12 @@
 ```
 
 ```
+# env
+- `vi.stubEnv` : 接收两个值将 第二个值绑定在环境变量的第一个值的key上.
+- `vi.unstubAllEnvs` 删除 `vi.stubEnv` 绑定的所有值 
+# global 
+- `vi.stubGlobal` : 接收两个值 把第二个值绑定在 window 的第一个值key上.
+- `vi.unstubGlobal` : 删除  `vi.stubGlobal` 绑定的所有值
 # vitest 生命周期
 ## 执行顺序 & 作用域
 1. 生命周期对同层有效果

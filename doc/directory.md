@@ -11,4 +11,4 @@
 - [17-后门操作准备数据的方式](https://github.com/Lzy49/HowToTest/blob/main/doc/how.md)
 - [18-最小准备测试数据原则](https://github.com/Lzy49/HowToTest/blob/main/doc/how.md)
 - [19-程序的间接输入-依赖函数调用-stub 的应用](https://github.com/Lzy49/HowToTest/blob/main/doc/how.md)
-
+- [20-程序的间接输入-第三方库&对象&class&常量](https://github.com/Lzy49/HowToTest/blob/main/doc/how.md)

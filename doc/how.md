@@ -105,6 +105,7 @@ it('test 直接' , () => {
 - 测试传入值是另一个业务函数创造的值.
 - 常用在 数据在 内存 , 环境变量 ,store 中
 #### 方法
+#### 处理普通值
 - 替换掉真实的逻辑实现.
 - 使用场景 : 当我们可以控制传入值时,可以使用这种方式.
 - 方案:使用 mock 模拟程序产生数据.
@@ -139,3 +140,32 @@ it('test 依赖函数调用',() => {
 ```
 ##### 处理 Promise 异步
 - 直接使用 mock 返回 Promise 即可 .
+##### 接入第三方库&对象&class&常量
+###### 第三方库
+其实第三方库的本质也是函数, 只需要使用 mock 进行模拟即可
+```js
+vi.mock('axios')
+describe('test axios', async () => {
+  test('test axios', async () => {
+    vi.mocked(axios).mockResolvedValue({
+      name: '李四'
+    })
+    const data = await fetchData()
+    expect(data.name).toBe('李四')
+  })
+})
+```
+##### 对象
+`vi.mock`直接更改对象的值, 但是要保证有卸载.
+##### 模块常量
+`vi.mock`直接更改常量值
+##### 获取env常量
+- `vi.stubEnv` 更改常量
+- `vi.unstubEnv` 取消常量更改
+##### 获取window常量
+- `vi.stubGlobal` : 接收两个值 把第二个值绑定在 window 的第一个值key上.
+- `vi.unstubGlobal` : 删除  `vi.stubGlobal` 绑定的所有值
+##### 通过间接层处理输出
+给 window 对象使用的函数增加一个工具函数包裹.从而可以通过 mock 函数来解决获取 window 问题.
+### 总结
+- mock 可以直接更改业务代码依赖对象.
