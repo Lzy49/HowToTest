@@ -1,17 +1,22 @@
 import { describe, expect, test, vi } from 'vitest'
-import { add100Money } from './index'
+import { add100Money, fetchData } from './index'
 import { createItem, fetchGetItem } from './user'
-vi.mock('./user', () => ({
-  createItem() {
-    return {
-      name: 'xx',
+import axios from 'axios'
+vi.mock('./user', async (fn) => {
+  const result = await fn();
+  return ({
+    ...result as any,
+    createItem() {
+      return {
+        name: 'xx',
+        money: 10
+      }
+    },
+    fetchGetItem: () => Promise.resolve({
       money: 10
-    }
-  },
-  fetchGetItem: () => Promise.resolve({
-    money: 10
+    })
   })
-}))
+})
 describe('mock', () => {
   test('test mock', () => {
     const item = createItem();
@@ -47,9 +52,20 @@ describe('doMock', () => {
     expect(add100Money(item).money).toBe(110)
   })
 })
-describe.only('异步获取数据 ', async () => {
+describe('异步获取数据 ', async () => {
   test('异步获取数据', async () => {
     const item = await fetchGetItem();
     expect(add100Money(item).money).toBe(110)
+  })
+})
+
+vi.mock('axios')
+describe('test axios', async () => {
+  test('test axios', async () => {
+    vi.mocked(axios).mockResolvedValue({
+      name: '李四'
+    })
+    const data = await fetchData()
+    expect(data.name).toBe('李四')
   })
 })

@@ -8,3 +8,4 @@ export function fetchGetItem(){
     money: 1098
   })
 }
+export const PACKAGE_NAME = 'package name'
