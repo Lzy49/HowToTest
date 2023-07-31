@@ -93,6 +93,9 @@ it('add',() => {
 1. [19-程序的间接输入-依赖函数调用-stub 的应用](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6432c647e4b0b2d1c405309f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 2. [20-程序的间接输入-第三方库&对象&class&常量](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64352f78e4b0b0bc2bd55ba4?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 3. [21-程序的间接输入-环境变量-全局global-间接层处理技巧](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64397ffce4b0f2aa7ddc47d1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+3. [22-程序的间接输入-依赖注入](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_643cae20e4b0b2d1c408cd69?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+4. [23-状态验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_643eba54e4b09d72378e3ca0?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+5. [24-行为验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64435ffde4b0cf39e6bf843f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ## 输入
 ### 直接输入
 - 测试代码直接给 业务代码传入的 内容. 
@@ -169,5 +172,43 @@ describe('test axios', async () => {
 - `vi.unstubGlobal` : 删除  `vi.stubGlobal` 绑定的所有值
 ##### 通过间接层处理输出
 给 window 对象使用的函数增加一个工具函数包裹.从而可以通过 mock 函数来解决获取 window 问题.
+##### 依赖注入
+需要什么就传入什么. 比如需要 window 就将 window 传入 不使用环境本身可以拿到的 window
 ### 总结
 - mock 可以直接更改业务代码依赖对象.
+## 验证
+###  状态验证
+#### 状态是什么
+- 属性 
+- 数据结构
+#### 状态验证是什么
+- 状态验证就是 对 结果的属性 和 数据结构进行验证. 对实现逻辑不关注
+#### 状态验证的好处
+- 可以放心大胆的重构
+#### 操作
+##### 内部数据
+- 通过暴露接口获取验证
+##### 依赖数据
+- 在 test 中引入 ,使用依赖的测试方法测试.
+### 行为验证
+#### 什么是行为验证
+- 验证对象之间的交互是否按照预期进行.
+- A 调用了 B 的 c 方法.
+#### 测试点
+1. 函数调用了几次
+2. 调用函数的对象是什么.
+#### 操作
+1. 假定状态的改变都是因行为的改变引起的.
+2. 只要行为是正确的那状态就会是正确的.
+##### mock ( 测试替身 )
+1. 生成测试提升
+2. 记录交互信息
+3. 验证交互信息
+#### 缺点
+1. 测试行为会根据行为验证,所以内部逻辑发生改变,则测试会报错.
+2. 和状态无关,但是我们的业务是与结果强相关的,所以会丧失测试有效性.
+#### 使用时机
+1. 状态非常难获取, http 请求 , 第三方库.
+2. 成本不够的问题, http 返回值. 
+3. 调试bug
+
