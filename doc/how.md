@@ -5,7 +5,13 @@
 2. 调用测试的功能(when) -> 例如 点击上传按扭,点击保存 
 3. 验证功能(then) ->  例如 保存后返回了我们想要的数据
 4. 拆卸 -> 例如 刷新页面,清理缓存,清理后端数据,切换新帐号.保证测试环境干净
-
+# 什么样的代码是可测的
+## 课时
+[26-可预测性-随机数-日期date](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6448ee48e4b0b0bc2bdd23c2?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+## 结论
+代码逻辑是稳定的, 保证给定输入时产生可预测的输出.
+## 解决
+以 mock 来模拟外部依赖,来解决外部库的稳定性
 # 准备测试数据的方式 ( given )
 ## 课时
 - [16-准备测试数据的三种方式](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64296c96e4b0b0bc2bd102d8?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
@@ -93,9 +99,10 @@ it('add',() => {
 1. [19-程序的间接输入-依赖函数调用-stub 的应用](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6432c647e4b0b2d1c405309f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 2. [20-程序的间接输入-第三方库&对象&class&常量](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64352f78e4b0b0bc2bd55ba4?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 3. [21-程序的间接输入-环境变量-全局global-间接层处理技巧](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64397ffce4b0f2aa7ddc47d1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
-3. [22-程序的间接输入-依赖注入](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_643cae20e4b0b2d1c408cd69?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
-4. [23-状态验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_643eba54e4b09d72378e3ca0?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
-5. [24-行为验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64435ffde4b0cf39e6bf843f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+4. [22-程序的间接输入-依赖注入](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_643cae20e4b0b2d1c408cd69?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+5. [23-状态验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_643eba54e4b09d72378e3ca0?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+6. [24-行为验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64435ffde4b0cf39e6bf843f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+7. [25-不知道验证什么-完美主义&功能的目的&小步走](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64465d3ee4b0f2aa7de11df1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ## 输入
 ### 直接输入
 - 测试代码直接给 业务代码传入的 内容. 
@@ -211,4 +218,6 @@ describe('test axios', async () => {
 1. 状态非常难获取, http 请求 , 第三方库.
 2. 成本不够的问题, http 返回值. 
 3. 调试bug
-
+### 我们要验证什么
+1. 我们验证的内容是整个业务的功能,而不应该聚焦在一个小函数上. 如果这个小函数可以满足当前业务 则不需要对它进行更多的验证.
+2. 用到什么功能就写什么功能, 不要过度设计 , 需要再写.
