@@ -105,6 +105,7 @@ it('add',() => {
 7. [25-不知道验证什么-完美主义&功能的目的&小步走](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64465d3ee4b0f2aa7de11df1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 8. [27-快速反馈-处理异步代码time—promise](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_644a80e0e4b0b0bc2bddd875?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 9. [28-API 的多种测试方案](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6453c3a7e4b0b2d1c41111c9?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+10. [29-参数化验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6456febfe4b0b0bc2be15950?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ## 输入
 ### 直接输入
 - 测试代码直接给 业务代码传入的 内容. 
@@ -245,3 +246,7 @@ describe('test axios', async () => {
 1. mock 接口封装
 2. 验证业务代码 返回 mock 数据 验证状态.
 > 优势 1. mock 接口封装可以明确接口 , 2. 当 axios 发生变化时,不会影响 mock .
+#### 参数化验证
+- 解决 提供给多个 test case 中重用相同测试逻辑的方法. 相当于 forEach 执行相同逻辑
+- API each
+
