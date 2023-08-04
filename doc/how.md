@@ -249,4 +249,10 @@ describe('test axios', async () => {
 #### 参数化验证
 - 解决 提供给多个 test case 中重用相同测试逻辑的方法. 相当于 forEach 执行相同逻辑
 - API each
-
+# 手动 -> 自动
+## 课时
+- [30-手动测试到单元测试的认知转变](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_645ce7c2e4b0f2aa7de8dbb1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+## 结论
+1. 单测的责任是 逻辑测试 ,而组件的操作是由组件测试完成的.
+2. 如果想给项目增加单测 , 就需要 将 组件能力 和 逻辑能力分离.
+3. e2e ( 小 ) <- 组件 ( 中 ) <- 单测 ( 大 ) 
