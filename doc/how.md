@@ -103,6 +103,7 @@ it('add',() => {
 5. [23-状态验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_643eba54e4b09d72378e3ca0?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 6. [24-行为验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64435ffde4b0cf39e6bf843f?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 7. [25-不知道验证什么-完美主义&功能的目的&小步走](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64465d3ee4b0f2aa7de11df1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+8. [27-快速反馈-处理异步代码time—promise](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_644a80e0e4b0b0bc2bddd875?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ## 输入
 ### 直接输入
 - 测试代码直接给 业务代码传入的 内容. 
@@ -221,3 +222,6 @@ describe('test axios', async () => {
 ### 我们要验证什么
 1. 我们验证的内容是整个业务的功能,而不应该聚焦在一个小函数上. 如果这个小函数可以满足当前业务 则不需要对它进行更多的验证.
 2. 用到什么功能就写什么功能, 不要过度设计 , 需要再写.
+### 测试要快
+1. 测试一定要快, 因为是替换手动测试的.
+2. 一些 api 不够快应该使用对应的工具处理 

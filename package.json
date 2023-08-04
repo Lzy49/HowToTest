@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "flush-promises": "^1.0.2",
     "vitest": "^0.33.0"
   }
 }

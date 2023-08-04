@@ -39,8 +39,16 @@
 # vi.spyOn 
 在对象的方法或 getter/setter上创建模拟
 用来改变一个对象的稳定性
+- vi.spyOn(对象 , key , newValue )
 # vi.setSystemTime 
 设置当前系统时间, 确保获取的时间是模拟的时间.
+# vi.useFakeTimers  处理 timer
+- useFakeTimers 开启 mock setTimeout / setInterval
+- advanceTimersToNextTimer  快进到 setTimeout / setInterval 结束
+  - 如果有嵌套的 setTimeOut 需要 调用多次
+- advanceTimersByTime  快进到 函数接收值 结束
+- runAllTimers 快进所有的 setTimeout / setInterval 
+# 
 # env
 - `vi.stubEnv` : 接收两个值将 第二个值绑定在环境变量的第一个值的key上.
 - `vi.unstubAllEnvs` 删除 `vi.stubEnv` 绑定的所有值 
