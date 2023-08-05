@@ -106,6 +106,7 @@ it('add',() => {
 8. [27-快速反馈-处理异步代码time—promise](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_644a80e0e4b0b0bc2bddd875?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 9. [28-API 的多种测试方案](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6453c3a7e4b0b2d1c41111c9?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 10. [29-参数化验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6456febfe4b0b0bc2be15950?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+11. [33-掌握使用 test double 测试替身的核心思想]([660e6ae4b0b0bc2be74b3c?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64660e6ae4b0b0bc2be74b3c?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6))
 ## 输入
 ### 直接输入
 - 测试代码直接给 业务代码传入的 内容. 
@@ -249,6 +250,14 @@ describe('test axios', async () => {
 #### 参数化验证
 - 解决 提供给多个 test case 中重用相同测试逻辑的方法. 相当于 forEach 执行相同逻辑
 - API each
+#### 测试替身
+- 作用: 将被测代码 与 周围隔离开 掌握一切
+- 场景: 当我们有 5个功能 , 我们可以只隔离出 其中 2个来测试, 然后避免受其他3个的影响.
+- 好处:
+  - 加速测试 : 替换接口, setTime
+  - 使执行变得确定 : 替换接口 , 随机值, 日期
+  - 模拟特殊场景 : 测试网络断开, 测试 环境清理 token.
+  - 暴露隐藏信息 : 行为测试,测试某个功能的行为
 # 手动 -> 自动
 ## 课时
 - [30-手动测试到单元测试的认知转变](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_645ce7c2e4b0f2aa7de8dbb1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
