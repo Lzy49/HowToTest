@@ -266,3 +266,15 @@ describe('test axios', async () => {
 ## 操作
 1. 当写测试时,有其他想法.利用todo来记录,不打断当前测试 
   
+# 测试回报率
+## 课时
+- [32-不是所有代码都值得写测试](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_646362afe4b0cf39e6cac237?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+## 结论
+### 要测试
+- 只测回报率较高的: 公用库,公用组件,重要逻辑.
+- 只测试容易出错的逻辑.
+- 针对功能做测试 , 而不是某个函数.
+### 不测试
+- 逻辑非常简单的
+- 第三方库的简单包装
+- 非关键代码 
