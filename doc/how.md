@@ -256,3 +256,13 @@ describe('test axios', async () => {
 1. 单测的责任是 逻辑测试 ,而组件的操作是由组件测试完成的.
 2. 如果想给项目增加单测 , 就需要 将 组件能力 和 逻辑能力分离.
 3. e2e ( 小 ) <- 组件 ( 中 ) <- 单测 ( 大 ) 
+# 测试基本策略
+## 课时
+- [31-测试的基本策略-正向测试&反向测试&异常测试](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6460a37ce4b0f2aa7dea0338?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+## 策略类型
+- 正向测试 (happy path) : 给定预期输入 , 满足功能需求
+- 反向测试 (sad path) : 给定无效,错误输入, 看是否满足功能需求
+- 异常测试 (sad path) : 检测代码是否可以正常报错.
+## 操作
+1. 当写测试时,有其他想法.利用todo来记录,不打断当前测试 
+  
