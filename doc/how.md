@@ -107,6 +107,8 @@ it('add',() => {
 9. [28-API 的多种测试方案](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6453c3a7e4b0b2d1c41111c9?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 10. [29-参数化验证](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_6456febfe4b0b0bc2be15950?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 11. [33-掌握使用 test double 测试替身的核心思想]([660e6ae4b0b0bc2be74b3c?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_64660e6ae4b0b0bc2be74b3c?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6))
+12. [34-测试替身的类型-dummy-stub-spy-mock-fake](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_646a37bfe4b0cf39e6cd2f32?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
+13. [35-独居测试和群居测试](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_646cd4c8e4b0b0bc2be9a901?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
 ## 输入
 ### 直接输入
 - 测试代码直接给 业务代码传入的 内容. 
@@ -245,7 +247,7 @@ describe('test axios', async () => {
 2. 执行业务代码 返回 mock 数据 验证状态.
 #### mock 接口 中间层
 1. mock 接口封装
-2. 验证业务代码 返回 mock 数据 验证状态.
+2. 验证业务代码 返回 mock 数据 验 证状态.
 > 优势 1. mock 接口封装可以明确接口 , 2. 当 axios 发生变化时,不会影响 mock .
 #### 参数化验证
 - 解决 提供给多个 test case 中重用相同测试逻辑的方法. 相当于 forEach 执行相同逻辑
@@ -258,6 +260,46 @@ describe('test axios', async () => {
   - 使执行变得确定 : 替换接口 , 随机值, 日期
   - 模拟特殊场景 : 测试网络断开, 测试 环境清理 token.
   - 暴露隐藏信息 : 行为测试,测试某个功能的行为
+####  测试替身分类
+- 哑元对象: dummy 对象 : 
+  - 一个 case 只测试一项功能,但一些代码需要传入多变量,而无关测试的变量使用哑元对象来表示.
+  - 为了解决类型报错 , 业务函数要求 等问题.
+- 测试桩 stub : 
+  - 用来隔离依赖,让 case 专注测试.
+  - 用来处理间接输入. 
+- 测试间谍 Spy:
+  - 收集细节信息, 用于细节测试.
+- 模拟对象 Mock :
+  - stub + spy 
+  - 隔离依赖 ,处理间接输入
+  - 收集细节信息 .
+- 伪造对象 Fake:
+  - 真实实现的简化版 来保证 逻辑可以实现测试.
+#### 测试策略
+- 独居测试 : 
+  - 只测试待测系统,依赖的东西全部隔离.
+  - 通过 mock stub 去模拟 依赖
+  - 好处: 精准定位问题
+  - 缺点: 
+    - 需要写大量依赖.
+    - 暴露实现细节. 增加重构成本
+    - 忽略组件交互
+  - 场景:
+    - 架构清晰的情况下可以使用
+- 群居测试 : 
+  - 测试待测系统的依赖模块.
+  - happy path
+  - 好处:
+    - 真实场景
+    - 可以知道组件之间的交互
+  - 缺点:
+    - 定位问题困难
+    - setup 费力
+  - 解决:
+    - 小步走 
+    - setup 做工具, 做闭包
+#### 单测原则
+1. 不要写和当前 case 无关的内容
 # 手动 -> 自动
 ## 课时
 - [30-手动测试到单元测试的认知转变](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/video/v_645ce7c2e4b0f2aa7de8dbb1?product_id=p_63f3795ee4b06159f73e6452&content_app_id=&type=6)
